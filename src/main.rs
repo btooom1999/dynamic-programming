@@ -1,5 +1,8 @@
+#![allow(unused)]
+
 mod fibonacci;
+mod longest_increasing_subsequence;
 
 fn main() {
-    fibonacci::main();
+    longest_increasing_subsequence::main();
 }
