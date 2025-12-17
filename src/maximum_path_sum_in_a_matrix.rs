@@ -11,9 +11,9 @@ pub fn main() {
         [7, 2, 6, 2, 1, 3, 7]
     ].to_vec();
 
-    let mut results = vec![vec![0;1]; n];
+    let mut results = vec![vec![i32::MIN; k]; n];
 
-    let mut max = matrix[0][0];
+    let mut max = i32::MIN;
 
     for i in 0..n {
         results[i][0] = matrix[i][0];
@@ -24,25 +24,14 @@ pub fn main() {
             let prev_val = results[i][j-1];
 
             let ai = (cmp::max(i.saturating_sub(1), 0), j);
-            if let Some(val) = results.get(ai.0).unwrap().get(ai.1) {
-                results[ai.0][ai.1] = cmp::max(val.to_owned(), prev_val + matrix[ai.0][ai.1]);
-            } else {
-                results[ai.0].push(prev_val + matrix[ai.0][ai.1]);
-            }
+            results[ai.0][ai.1] = cmp::max(results[ai.0][ai.1], prev_val + matrix[ai.0][ai.1]);
 
             let mi = (i, j);
-            if let Some(val) = results.get(mi.0).unwrap().get(mi.1) {
-                results[mi.0][mi.1] = cmp::max(val.to_owned(), prev_val + matrix[mi.0][mi.1]);
-            } else {
-                results[mi.0].push(prev_val + matrix[mi.0][mi.1]);
-            }
+            results[mi.0][mi.1] = cmp::max(results[mi.0][mi.1], prev_val + matrix[mi.0][mi.1]);
+            
 
-            let bi = (cmp::min(i.saturating_add(1), n - 1), j);
-            if let Some(val) = results.get(bi.0).unwrap().get(bi.1) {
-                results[bi.0][bi.1] = cmp::max(val.to_owned(), prev_val + matrix[bi.0][bi.1]);
-            } else {
-                results[bi.0].push(prev_val + matrix[bi.0][bi.1]);
-            }
+            let bi = (cmp::min(i.saturating_add(1), n - 1), j);                
+            results[bi.0][bi.1] = cmp::max(results[bi.0][bi.1], prev_val + matrix[bi.0][bi.1]);
 
             max = cmp::max(max, results[i][j]);
         }
