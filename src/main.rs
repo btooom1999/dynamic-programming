@@ -2,7 +2,8 @@
 
 mod fibonacci;
 mod longest_increasing_subsequence;
+mod buy_tickets_problem;
 
 fn main() {
-    longest_increasing_subsequence::main();
+   buy_tickets_problem::main();
 }
