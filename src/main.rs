@@ -8,7 +8,8 @@ mod domino_tile;
 mod steps_problem;
 mod minimum_edge_cover;
 mod hall_problem;
+mod bulls_and_cows;
 
 fn main() {
-   minimum_edge_cover::main();
+   bulls_and_cows::main();
 }
