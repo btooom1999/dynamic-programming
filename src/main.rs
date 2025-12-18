@@ -7,7 +7,8 @@ mod maximum_path_sum_in_a_matrix;
 mod domino_tile;
 mod steps_problem;
 mod minimum_edge_cover;
+mod hall_problem;
 
 fn main() {
-   minimum_edge_cover::main();
+   hall_problem::main();
 }
