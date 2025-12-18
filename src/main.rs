@@ -10,5 +10,5 @@ mod minimum_edge_cover;
 mod hall_problem;
 
 fn main() {
-   hall_problem::main();
+   minimum_edge_cover::main();
 }
